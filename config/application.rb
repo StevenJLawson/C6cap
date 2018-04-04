@@ -22,6 +22,16 @@ module Capstone
   	config.generators {|g| g.orm :active_record}
   	#config.generators {|g| g.orm :mongoid}
 
+  	config.middleware.inser_before 0, "Rack::Cors"  do
+  		allow do
+  			origins '*'
+
+  			resource '/api/*',
+  				:headers => :any,
+  				:methods => [:get, :post, :put, :delete, :options]
+  		end
+  	end
+
 
 	config.active_record.raise_in_transactional_callbacks = true 
 
