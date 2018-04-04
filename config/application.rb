@@ -22,8 +22,9 @@ module Capstone
   	config.generators {|g| g.orm :active_record}
   	#config.generators {|g| g.orm :mongoid}
 
-  	config.middleware.inser_before 0, "Rack::Cors"  do
+  	config.middleware.insert_before 0, "Rack::Cors"  do
   		allow do
+  			#Add domains later
   			origins '*'
 
   			resource '/api/*',
